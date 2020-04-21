@@ -1,0 +1,12 @@
+#image {
+    margin-bottom: 10px;
+    height: 400px;
+    width: 400px;
+    object-fit: cover;
+}
+
+#imageContainer {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}

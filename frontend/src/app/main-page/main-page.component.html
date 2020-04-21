@@ -1,0 +1,21 @@
+<div class="jumbotron">
+    <h1>Glisserie</h1>
+
+</div>
+
+<div class="container" id="menu">
+    <button class="btn" id="messagesButton" (click)="messages()">Messages</button>
+    <button class="btn btn-primary" id="listingsButton" (click)="listings()">Mes Announces</button>
+    <button class="btn btn-warning" id="profileButton" (click)="profile()">Profil</button>
+</div>
+
+<app-listing *ngIf="listingObject != null" [listingObject]="listingObject"></app-listing>
+
+<div *ngIf="listingObject == null" class="container">
+    <p>No more listings, sad :(</p>
+</div>
+
+<div class="container" id="optionsContainer">
+    <button class="btn btn-danger" id="hateButton" (click)="hate()">Je déteste fa</button>
+    <button class="btn btn-success" id="loveButton" (click)="love()">J'aime cela </button>
+</div>
