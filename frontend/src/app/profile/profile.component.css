@@ -31,3 +31,15 @@
 #editProfileButton {
     margin-top: 36px;
 }
+
+#newListingContainer {
+    margin-top: 50px;
+    text-align: center;
+}
+
+#newListingButton {
+    font-size: 1.4em;
+    border-radius: 10px;
+    background-color: #68A691;
+    border: none;
+}

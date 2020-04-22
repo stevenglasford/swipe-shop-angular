@@ -1,9 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ListingComponent } from './listing/listing.component';
@@ -25,8 +22,7 @@ import { ListingCardComponent } from './listing-card/listing-card.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    NgbModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

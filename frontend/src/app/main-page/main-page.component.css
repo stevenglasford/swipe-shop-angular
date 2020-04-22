@@ -2,10 +2,22 @@
     text-align: center;
 }
 
+button {
+    color: rgb(250, 250, 250);
+    font-size: 1.5em;
+    border-radius: 8px;
+}
+
+button:hover {
+    color: white;
+}
+
 #hateButton {
-    margin-right: 5px;
+    margin-right: 8px;
+    background-color: rgb(201, 104, 104);
 }
 
 #loveButton {
-    margin-left: 5px;
+    margin-left: 8px;
+    background-color: #68A691;
 }
