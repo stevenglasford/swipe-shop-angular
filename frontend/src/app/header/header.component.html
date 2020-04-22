@@ -1,0 +1,39 @@
+<!-- <div class="jumbotron">
+    <div class="row">
+        <div class="col">
+            <h1><b>Swipe</b>Shop</h1>
+        </div>
+        <div class="col">
+            <button class="btn" id="homeButton" routerLink="/">Home</button>
+            <button class="btn" id="messagesButton">Messages</button>
+            <button class="btn" id="listingsButton">My Listings</button>
+            <button class="btn" id="profileButton" routerLink="/profile">Profile</button>
+        </div>
+    </div>
+
+</div> -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button (click)="isCollapsed = !isCollapsed" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div [collapse]="isCollapsed" class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>

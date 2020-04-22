@@ -22,18 +22,6 @@ export class MainPageComponent implements OnInit {
     this.listingObject = this.dataInteractionService.pullNewListing();
   }
 
-  messages(){
-    console.log('messages')
-  }
-
-  listings(){
-    console.log('listings')
-  }
-
-  profile(){
-    console.log('profile')
-  }
-
   hate(){
     this.dataInteractionService.hateItem(this.listingObject)
     this.newListing()

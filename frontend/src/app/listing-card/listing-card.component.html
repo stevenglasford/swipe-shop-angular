@@ -1,0 +1,19 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-auto">
+                <img src={{listingObject.imageUrl}} alt="profile picture" id="listingPicture">
+            </div>
+            <div class="col">
+                <h5>{{listingObject.description}}</h5>
+            </div>
+            <div class="col">
+                ${{listingObject.price}}
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-light" id="editButton">Éditer</button>
+                <button class="btn btn-danger" id="removeButton">Retirer</button>
+            </div>
+        </div>
+    </div>
+</div>

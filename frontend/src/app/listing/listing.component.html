@@ -1,6 +1,13 @@
 <div class="container" id="imageContainer">
-    <p>Ville: {{listingObject.city}}</p>
-    <p>Prix: ${{listingObject.price}}</p>
+    <h4>{{listingObject.description}}</h4>
     <img src={{listingObject.imageUrl}} alt="Image" id="image">
-    <p>{{listingObject.description}}</p>
+    <div class="row" id="detailsRow">
+        <div class="col-auto">
+            Ville: {{listingObject.city}}
+        </div>
+        <div class="col"></div>
+        <div class="col-auto">
+            Prix: ${{listingObject.price}}
+        </div>
+    </div>
 </div>

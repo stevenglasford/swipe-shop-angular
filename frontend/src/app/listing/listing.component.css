@@ -1,7 +1,9 @@
 #image {
     margin-bottom: 10px;
     height: 400px;
+    /* max-height: 400px; */
     width: 400px;
+    /* max-width: 400px; */
     object-fit: cover;
     border-radius: 15px;
     box-shadow: 5px 5px 15px grey;
@@ -9,6 +11,15 @@
 
 #imageContainer {
     margin-top: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     text-align: center;
+}
+
+#detailsRow {
+    margin: auto;
+    max-width: 375px;
+}
+
+h4 {
+    margin-bottom: 15px;
 }

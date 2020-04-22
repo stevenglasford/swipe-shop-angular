@@ -1,15 +1,6 @@
-<div class="jumbotron">
-    <h1>Glisserie</h1>
+<app-listing *ngIf="listingObject != null" [listingObject]="listingObject">
 
-</div>
-
-<div class="container" id="menu">
-    <button class="btn" id="messagesButton" (click)="messages()">Messages</button>
-    <button class="btn btn-primary" id="listingsButton" (click)="listings()">Mes Announces</button>
-    <button class="btn btn-warning" id="profileButton" (click)="profile()">Profil</button>
-</div>
-
-<app-listing *ngIf="listingObject != null" [listingObject]="listingObject"></app-listing>
+</app-listing>
 
 <div *ngIf="listingObject == null" class="container">
     <p>No more listings, sad :(</p>

@@ -1,23 +1,5 @@
-.jumbotron {
-    padding-top: 2%;
-    padding-bottom: 2%;
-}
-
-h1 {
-    text-align: center;
-}
-
-#menu {
-    text-align: center;
-}
-
 #optionsContainer {
     text-align: center;
-}
-
-#listingsButton {
-    margin-left: 10px;
-    margin-right: 10px;
 }
 
 #hateButton {
@@ -26,9 +8,4 @@ h1 {
 
 #loveButton {
     margin-left: 5px;
-}
-
-#messagesButton {
-    background-color: purple;
-    color: white;
 }
