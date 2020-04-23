@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, ElementRef, ViewChild } from '@angular/core';
 import { InternalInteractionService } from '../internal-interaction.service';
 import { DataInteractionService } from '../data-interaction.service';
 import { Message } from '../message';
@@ -8,7 +8,8 @@ import { Message } from '../message';
   templateUrl: './messaging.component.html',
   styleUrls: ['./messaging.component.css']
 })
-export class MessagingComponent implements OnInit {
+export class MessagingComponent implements OnInit, AfterViewChecked {
+  @ViewChild('scrollable') private myScrollContainer : ElementRef;
 
   messages : Message[];
 
@@ -17,8 +18,18 @@ export class MessagingComponent implements OnInit {
   messageIsEnd : boolean[] = [];
   needsDateSeparator : boolean[] = [];
 
+  messageText : string = '';
+
 
   constructor(private internalInteractionService : InternalInteractionService, private dataInteractionService : DataInteractionService) { }
+
+  ngAfterViewChecked(){
+    try{
+      this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+    } catch {
+
+    }
+  }
 
   ngOnInit(): void {
     // get the person we're messaging
@@ -27,7 +38,16 @@ export class MessagingComponent implements OnInit {
     // get our messages from the database
     this.messages = this.dataInteractionService.pullMessages(this.internalInteractionService.getViewingUser());
 
-    console.log(this.messages);
+    this.updateMessageArrays();
+
+    
+  }
+
+  updateMessageArrays(){
+    this.messageIsStart = [];
+    this.messageIsMiddle = [];
+    this.messageIsEnd = [];
+    this.needsDateSeparator = [];
 
     var counter = 0;
     this.messages.forEach(() => {
@@ -57,11 +77,6 @@ export class MessagingComponent implements OnInit {
 
       counter++;
     });
-
-    console.log(this.messageIsStart)
-    console.log(this.messageIsMiddle)
-    console.log(this.messageIsEnd)
-
   }
 
   nextMessageIsContinued(thisIndex : number){
@@ -83,6 +98,14 @@ export class MessagingComponent implements OnInit {
     } catch {
       return false;
     }
+  }
+
+  sendMessage(){
+    // temp
+    this.messages.push(new Message('beastmaster69', 'terry.crews', '', this.messageText, new Date()));
+    this.updateMessageArrays();
+
+    this.messageText = '';
   }
 
 }

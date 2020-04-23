@@ -1,5 +1,6 @@
-<div class="container">
-    <div id="messages">
+<div id="container">
+    <app-header></app-header>
+    <div #scrollable id="messages">
         <div *ngFor="let message of messages" class="message">
 
             <div *ngIf="needsDateSeparator[messages.indexOf(message)]" class="newDay">
@@ -23,9 +24,9 @@
         </div>
     </div>
     <div class="input-group mb-3" id="inputGroup">
-        <input id="messageInput" type="text" class="form-control" placeholder="Message" aria-describedby="basic-addon2">
+        <input (keyUp.enter)="sendMessage()" [(ngModel)]="messageText" #ctrl="ngModel" id="messageInput" type="text" class="form-control" placeholder="Message" aria-describedby="basic-addon2">
         <div class="input-group-append">
-            <button id="sendButton" class="btn btn-outline-secondary" type="button">Send</button>
+            <button (click)="sendMessage()" id="sendButton" class="btn btn-outline-secondary" type="button">Send</button>
         </div>
     </div>
 </div>

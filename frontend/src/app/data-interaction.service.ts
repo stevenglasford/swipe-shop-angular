@@ -40,6 +40,7 @@ export class DataInteractionService {
     new Message('random.person21', 'terry.crews', 'https://i.imgur.com/Ss75Vfa.jpg', 'I\'d fuck you up in a fight so bad', new Date('2020-04-22T18:34:00')),
     new Message('random.person21', 'terry.crews', 'https://i.imgur.com/Ss75Vfa.jpg', 'Your mom is the fucking bitch', new Date('2020-04-22T18:34:00')),
     new Message('terry.crews', 'random.person21', 'https://i.imgur.com/Ss75Vfa.jpg', 'Sorry that was my little brother', new Date('2020-04-23T18:38:00')),
+    new Message('terry.crews', 'random.person21', 'https://i.imgur.com/Ss75Vfa.jpg', 'My bad', new Date('2020-04-23T18:38:00')),
   ]
 
 
