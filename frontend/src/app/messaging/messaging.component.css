@@ -18,8 +18,8 @@
 #messages {
     padding: 20px;
     max-height: 700px;
-    overflow-y: scroll;
-    background-color: rgb(238, 238, 238);
+    overflow-y: auto;
+    /* background-color: rgb(238, 238, 238); */
 }
 
 .messages-right {
@@ -33,17 +33,42 @@
     padding-right: 15px;
     border-radius: 50px;
     display: inline-block;
-    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-top: 5px;
 }
 
 .msg-left {
+    border-top-left-radius: 10px;
     background-color: rgb(104, 166, 145);
     color: white;
 }
 
 .msg-right {
+    border-top-right-radius: 10px;
     background-color: rgb(216, 216, 216);
     color: rgb(39, 39, 39);
+}
+
+.startMessageLeft {
+    margin-bottom: 0;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 10px;
+}
+
+.middleMessageLeft {
+    margin-bottom: 0;
+    border-bottom-left-radius: 10px;
+}
+
+.startMessageRight {
+    margin-bottom: 0;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 10px;
+}
+
+.middleMessageRight {
+    margin-bottom: 0;
+    border-bottom-right-radius: 10px;
 }
 
 .time {
@@ -58,3 +83,23 @@
 .time-right {
     margin-right: 4px;
 }
+
+.messageProfilePicture {
+    margin-right: 10px;
+    height: 35px;
+    width: 35px;
+    object-fit: cover;
+    border-radius: 50px;
+}
+
+.newDay {
+    text-align: center;
+    font-weight: 300;
+    font-size: 0.9em;
+    margin-top: 20px;
+}
+
+
+/* #allContents {
+    max-width: 1000px;
+} */

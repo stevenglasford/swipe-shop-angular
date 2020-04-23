@@ -1,21 +1,31 @@
-<div id="messages">
-    <div *ngFor="let message of messages" class="message">
+<div class="container">
+    <div id="messages">
+        <div *ngFor="let message of messages" class="message">
 
-        <div class="messages-left">
-            <div class="msg msg-left">All this - it's just some stupid test message</div>
-            <div class="time time-left">9:38 PM</div>
+            <div *ngIf="needsDateSeparator[messages.indexOf(message)]" class="newDay">
+                {{message.sentDate | date:'EEEE, MMMM d'}}
+                <hr class="solid">
+            </div>
+
+
+
+            <div *ngIf="message.toUsername == 'terry.crews'" class="messages-left">
+                <div *ngIf="!(messageIsMiddle[messages.indexOf(message)] || messageIsEnd[messages.indexOf(message)])" class="time time-left">{{message.sentDate | date:'h:mm a'}}</div>
+                <img class="messageProfilePicture" src={{message.otherUserPictureUrl}} alt="profile">
+                <div class="msg msg-left" [ngClass]="{'startMessageLeft' : messageIsStart[messages.indexOf(message)], 'middleMessageLeft' : messageIsMiddle[messages.indexOf(message)]}">{{message.message}}</div>
+            </div>
+
+            <div *ngIf="message.toUsername != 'terry.crews'" class="messages-right">
+                <div *ngIf="!(messageIsMiddle[messages.indexOf(message)] || messageIsEnd[messages.indexOf(message)])" class="time time-right">{{message.sentDate | date:'h:mm a'}}</div>
+                <div class="msg msg-right" [ngClass]="{'startMessageRight' : messageIsStart[messages.indexOf(message)], 'middleMessageRight' : messageIsMiddle[messages.indexOf(message)]}">{{message.message}}</div>
+            </div>
+
         </div>
-
-        <div class="messages-right">
-            <div class="msg msg-right">I completely agree with every point youre making!!</div>
-            <div class="time time-right">9:38 PM</div>
-        </div>
-
     </div>
-</div>
-<div class="input-group mb-3" id="inputGroup">
-    <input id="messageInput" type="text" class="form-control" placeholder="Message" aria-describedby="basic-addon2">
-    <div class="input-group-append">
-        <button id="sendButton" class="btn btn-outline-secondary" type="button">Send</button>
+    <div class="input-group mb-3" id="inputGroup">
+        <input id="messageInput" type="text" class="form-control" placeholder="Message" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+            <button id="sendButton" class="btn btn-outline-secondary" type="button">Send</button>
+        </div>
     </div>
 </div>

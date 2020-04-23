@@ -21,23 +21,25 @@ export class DataInteractionService {
 
   // temp
   messagePreviews : Message[] = [
-    new Message('beastslayer69', 'terry.crews', 'https://i.imgur.com/Ss75Vfa.jpg', 'this is simply a test message', new Date('2020-04-22T18:30:00')),
+    new Message('beastmaster69', 'terry.crews', 'https://i.imgur.com/Ss75Vfa.jpg', 'this is simply a test message', new Date('2020-04-22T18:30:00')),
     new Message('some.user', 'terry.crews', 'https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', 'this is simply another test message', new Date('2020-04-22T18:30:00')),
     new Message('someother.user', 'terry.crews', 'https://scx1.b-cdn.net/csz/news/800/2015/howwilldatar.jpg', 'this is yet another test message', new Date('2020-04-22T18:30:00')),
     new Message('random.person21', 'terry.crews', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYW0XEqHljEUNvoFfmEEpM7Z4cyq5V66MNrLyXerInvBFM5KUc&usqp=CAU', 'this is yet yetttt another test message', new Date('2020-04-22T18:30:00')),
     new Message('kanye.west', 'terry.crews', 'https://peoplescience.maritz.com/-/media/Maritz/Project/PeopleScience/Articles/adult-grandma-elderly-432722.ashx?h=900&w=1200&la=en&hash=5F66C65B032FEE90B10A489D08EC8B7D0E64B8CE', 'this is a stupid test message', new Date('2020-04-22T18:30:00')),
-    new Message('kungfu.kenny', 'terry.crews',' https://pbs.twimg.com/profile_images/879355674957926400/VSGZHGib_400x400.jpg', 'this is a smart test message', new Date('2020-04-22T18:30:00')),
+    new Message('kungfu.kenny', 'terry.crews', 'https://pbs.twimg.com/profile_images/879355674957926400/VSGZHGib_400x400.jpg', 'this is a smart test message', new Date('2020-04-22T18:30:00')),
     new Message('woah.kenny', 'terry.crews', 'https://i.imgur.com/Ss75Vfa.jpg', 'this is another smart test message', new Date('2020-04-22T18:30:00')),
   ];
 
   messagesFromOneUser : Message[] = [
-    new Message('', '', '', 'this is simply a test message', new Date('2020-04-22T18:30:00')),
-    new Message('', '', '', 'this is simply a test message', new Date('2020-04-22T18:30:00')),
-    new Message('', '', '', 'this is simply a test message', new Date('2020-04-22T18:30:00')),
-    new Message('', '', '', 'this is simply a test message', new Date('2020-04-22T18:30:00')),
-    new Message('', '', '', 'this is simply a test message', new Date('2020-04-22T18:30:00')),
-    new Message('', '', '', 'this is simply a test message', new Date('2020-04-22T18:30:00')),
-    new Message('', '', '', 'this is simply a test message', new Date('2020-04-22T18:30:00')),
+    new Message('terry.crews', 'random.person21', 'https://i.imgur.com/Ss75Vfa.jpg', 'Hey Terry!', new Date('2020-04-22T18:30:00')),
+    new Message('terry.crews', 'random.person21', 'https://i.imgur.com/Ss75Vfa.jpg', 'How are you doing?', new Date('2020-04-22T18:30:00')),
+    new Message('terry.crews', 'random.person21', 'https://i.imgur.com/Ss75Vfa.jpg', 'Made any good sales lately?', new Date('2020-04-22T18:30:00')),
+    new Message('random.person21', 'terry.crews', 'https://i.imgur.com/Ss75Vfa.jpg', 'No, not really, you?', new Date('2020-04-22T18:32:00')),
+    new Message('terry.crews', 'random.person21', 'https://i.imgur.com/Ss75Vfa.jpg', 'Your mom is a bitch', new Date('2020-04-22T18:33:00')),
+    new Message('random.person21', 'terry.crews', 'https://i.imgur.com/Ss75Vfa.jpg', 'Hey listen here fuckface', new Date('2020-04-22T18:34:00')),
+    new Message('random.person21', 'terry.crews', 'https://i.imgur.com/Ss75Vfa.jpg', 'I\'d fuck you up in a fight so bad', new Date('2020-04-22T18:34:00')),
+    new Message('random.person21', 'terry.crews', 'https://i.imgur.com/Ss75Vfa.jpg', 'Your mom is the fucking bitch', new Date('2020-04-22T18:34:00')),
+    new Message('terry.crews', 'random.person21', 'https://i.imgur.com/Ss75Vfa.jpg', 'Sorry that was my little brother', new Date('2020-04-23T18:38:00')),
   ]
 
 
