@@ -17,18 +17,44 @@
 
 #messages {
     padding: 20px;
-    /* max-height: 700px; */
+    max-height: 700px;
     overflow-y: scroll;
     background-color: rgb(238, 238, 238);
-    flex-grow: 1;
 }
 
-.message {
-    height: 50px;
+.messages-right {
+    text-align: right;
 }
 
-#messagingContainer {
-    height: 80vh;
-    display: flex;
-    flex-flow: column;
+.msg {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 50px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.msg-left {
+    background-color: rgb(104, 166, 145);
+    color: white;
+}
+
+.msg-right {
+    background-color: rgb(216, 216, 216);
+    color: rgb(39, 39, 39);
+}
+
+.time {
+    font-size: 0.9em;
+    color: rgb(158, 158, 158);
+}
+
+.time-left {
+    margin-left: 4px;
+}
+
+.time-right {
+    margin-right: 4px;
 }

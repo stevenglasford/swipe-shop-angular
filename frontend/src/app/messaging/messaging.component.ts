@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { InternalInteractionService } from '../internal-interaction.service';
+import { DataInteractionService } from '../data-interaction.service';
+import { Message } from '../message';
 
 @Component({
   selector: 'app-messaging',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessagingComponent implements OnInit {
 
-  constructor() { }
+  messages : Message[];
+
+
+  constructor(private internalInteractionService : InternalInteractionService, private dataInteractionService : DataInteractionService) { }
 
   ngOnInit(): void {
+    // get the person we're messaging
+
+
+    // get our messages from the database
+    this.messages = this.dataInteractionService.pullMessages(this.internalInteractionService.getViewingUser());
   }
 
 }

@@ -7,8 +7,12 @@ import { ListingComponent } from './listing/listing.component';
 export class InternalInteractionService {
 
   currentListing : ListingComponent;
-  currentUserID : number;
+  viewingUserID : number = 6;
 
   constructor() { }
+
+  getViewingUser(){
+    return this.viewingUserID;
+  }
 
 }

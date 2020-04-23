@@ -1,13 +1,21 @@
-<div id="messagingContainer">
-    <div id="messages">
-        <div *ngFor="let x of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" class="message">
-            Message
+<div id="messages">
+    <div *ngFor="let message of messages" class="message">
+
+        <div class="messages-left">
+            <div class="msg msg-left">All this - it's just some stupid test message</div>
+            <div class="time time-left">9:38 PM</div>
         </div>
+
+        <div class="messages-right">
+            <div class="msg msg-right">I completely agree with every point youre making!!</div>
+            <div class="time time-right">9:38 PM</div>
+        </div>
+
     </div>
-    <div class="input-group mb-3" id="inputGroup">
-        <input id="messageInput" type="text" class="form-control" placeholder="Message" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-            <button id="sendButton" class="btn btn-outline-secondary" type="button">Send</button>
-        </div>
+</div>
+<div class="input-group mb-3" id="inputGroup">
+    <input id="messageInput" type="text" class="form-control" placeholder="Message" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+        <button id="sendButton" class="btn btn-outline-secondary" type="button">Send</button>
     </div>
 </div>
