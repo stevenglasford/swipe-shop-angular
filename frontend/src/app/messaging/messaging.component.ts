@@ -102,10 +102,11 @@ export class MessagingComponent implements OnInit, AfterViewChecked {
 
   sendMessage(){
     // temp
-    this.messages.push(new Message('beastmaster69', 'terry.crews', '', this.messageText, new Date()));
-    this.updateMessageArrays();
-
+    this.dataInteractionService.sendMessage(this.messageText, 'beastmaster69');
     this.messageText = '';
+    this.messages = this.dataInteractionService.pullMessages(this.internalInteractionService.getViewingUser());
+    this.updateMessageArrays();
+    
   }
 
 }

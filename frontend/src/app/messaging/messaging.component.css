@@ -18,6 +18,11 @@
 #messages {
     padding: 20px;
     overflow-y: auto;
+    height: 100%;
+}
+
+#messagesInner {
+    max-width: 1000px;
 }
 
 .messages-right {
