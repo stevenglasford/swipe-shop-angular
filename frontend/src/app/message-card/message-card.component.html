@@ -1,0 +1,20 @@
+<div class="card" (click)="onClick()">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-auto">
+                <img src={{message.otherUserPictureUrl}} alt="profile picture" id="listingPicture">
+            </div>
+            <div class="col">
+                <div class="row">
+                    <h5>{{message.otherUsername}}</h5>
+                </div>
+                <div class="row">
+                    <p id="preview">{{message.message}}</p>
+                </div>
+            </div>
+            <div class="col-auto">
+                <p id="timeAgo">{{agoTime}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<div id="listingCardContainer">
+    <div class="row">
+        <div *ngFor="let object of listingObjects" class="col">
+            <app-listing-preview [listingObject]="object"></app-listing-preview>
+        </div>
+    </div>
+
+    <!-- Bootstrap Flex could make extra cards look dumb -->
+</div>

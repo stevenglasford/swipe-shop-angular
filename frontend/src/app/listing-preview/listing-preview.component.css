@@ -1,0 +1,33 @@
+img {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.card {
+    padding: 20px;
+    box-shadow: 5px 5px 15px rgba(128, 128, 128, 0.384);
+    transition: all 0.1s ease-in-out;
+    margin: 10px;
+    /* margin: auto; */
+    /* width: 240px;
+    max-width: 240px; */
+    /* display: inline-block; */
+}
+
+.card:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+    box-shadow: 5px 5px 25px rgba(128, 128, 128, 0.384);
+}
+
+#namePrice {
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+#username {
+    margin-top: 5px;
+    margin-bottom: 0;
+}
