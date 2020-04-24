@@ -24,7 +24,7 @@
                 <div *ngIf="message.toUser.username == myUsername" class="messages-left">
                     <div *ngIf="!(messageIsMiddle[messages.indexOf(message)] || messageIsEnd[messages.indexOf(message)])" class="time time-left">{{message.sentDate | date:'h:mm a'}}</div>
                     <img *ngIf="message.attachmentUrl == ''" class="messageProfilePicture" src="{{message.fromUser.picture}}" alt="profile">
-                    <div *ngIf="message.attachmentUrl == ''" class="msg msg-left" [ngClass]="{'startMessageLeft' : messageIsStart[messages.indexOf(message)], 'middleMessageLeft' : messageIsMiddle[messages.indexOf(message)]}">{{message.message}}</div>
+                    <div *ngIf="message.attachmentUrl == ''" class="msg msg-left fade-in" [ngClass]="{'startMessageLeft' : messageIsStart[messages.indexOf(message)], 'middleMessageLeft' : messageIsMiddle[messages.indexOf(message)]}">{{message.message}}</div>
 
                     <div *ngIf="message.attachmentUrl != ''" class="attachmentContainerLeft">
                         <img class="attachment" src={{message.attachmentUrl}} alt="attachment">
@@ -34,7 +34,7 @@
 
                 <div *ngIf="message.toUser.username != myUsername" class="messages-right">
                     <div *ngIf="!(messageIsMiddle[messages.indexOf(message)] || messageIsEnd[messages.indexOf(message)])" class="time time-right">{{message.sentDate | date:'h:mm a'}}</div>
-                    <div *ngIf="message.attachmentUrl == ''" class="msg msg-right" [ngClass]="{'startMessageRight' : messageIsStart[messages.indexOf(message)], 'middleMessageRight' : messageIsMiddle[messages.indexOf(message)]}">{{message.message}}</div>
+                    <div *ngIf="message.attachmentUrl == ''" class="msg msg-right fade-in" [ngClass]="{'startMessageRight' : messageIsStart[messages.indexOf(message)], 'middleMessageRight' : messageIsMiddle[messages.indexOf(message)]}">{{message.message}}</div>
                     <div *ngIf="message.attachmentUrl != ''" class="attachmentContainerRight" [ngClass]="{'hasAttachmentMessage' : hasAttachmentMessage[messages.indexOf(message)]}">
                         <img class="attachment" src={{message.attachmentUrl}} alt="attachment">
                     </div>
