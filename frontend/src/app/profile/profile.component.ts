@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ListingObject } from '../listing_object';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataInteractionService } from '../data-interaction.service';
+import { UserProfile } from '../user-profile';
 
 @Component({
   selector: 'app-profile',
@@ -9,14 +9,16 @@ import { DataInteractionService } from '../data-interaction.service';
 })
 export class ProfileComponent implements OnInit {
 
-  dataInteractionService = new DataInteractionService();
+  userProfile : UserProfile;
 
-  myListings : ListingObject[]
+  // make this dynamic
+  isMyProfile : boolean = true;
 
-  constructor() { }
+  constructor(private dataInteractionService : DataInteractionService) { }
 
   ngOnInit(): void {
-    this.myListings = this.dataInteractionService.pullMyListings();
+    this.userProfile = this.dataInteractionService.pullProfile(0);
+
   }
 
   editProfile(){

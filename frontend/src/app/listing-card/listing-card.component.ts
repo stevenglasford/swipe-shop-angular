@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ListingObject } from '../listing_object';
+import { ListingObject } from '../listing-object';
 
 @Component({
   selector: 'app-listing-card',

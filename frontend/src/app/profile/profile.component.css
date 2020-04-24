@@ -1,6 +1,6 @@
 #profilePicture {
-    height: 250px;
-    width: 250px;
+    height: 200px;
+    width: 200px;
     border-radius: 100%;
     margin-bottom: 10px;
     box-shadow: 5px 5px 15px grey;
@@ -16,7 +16,7 @@
 }
 
 #listings {
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .col-auto {
@@ -34,12 +34,9 @@
 
 #newListingContainer {
     margin-top: 50px;
-    text-align: center;
 }
 
 #newListingButton {
-    font-size: 1.4em;
-    border-radius: 10px;
     background-color: #68A691;
     border: none;
 }
