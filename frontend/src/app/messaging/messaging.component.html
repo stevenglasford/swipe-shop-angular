@@ -21,21 +21,21 @@
                     <hr class="solid">
                 </div>
 
-                <div *ngIf="message.toUser.username == 'terry.crews'" class="messages-left">
+                <div *ngIf="message.toUser.username == myUsername" class="messages-left">
                     <div *ngIf="!(messageIsMiddle[messages.indexOf(message)] || messageIsEnd[messages.indexOf(message)])" class="time time-left">{{message.sentDate | date:'h:mm a'}}</div>
                     <img *ngIf="message.attachmentUrl == ''" class="messageProfilePicture" src="{{message.fromUser.picture}}" alt="profile">
                     <div *ngIf="message.attachmentUrl == ''" class="msg msg-left" [ngClass]="{'startMessageLeft' : messageIsStart[messages.indexOf(message)], 'middleMessageLeft' : messageIsMiddle[messages.indexOf(message)]}">{{message.message}}</div>
 
-                    <div *ngIf="message.attachmentUrl != ''" class="attachmentLeft">
+                    <div *ngIf="message.attachmentUrl != ''" class="attachmentContainerLeft">
                         <img class="attachment" src={{message.attachmentUrl}} alt="attachment">
                     </div>
 
                 </div>
 
-                <div *ngIf="message.toUser.username != 'terry.crews'" class="messages-right">
+                <div *ngIf="message.toUser.username != myUsername" class="messages-right">
                     <div *ngIf="!(messageIsMiddle[messages.indexOf(message)] || messageIsEnd[messages.indexOf(message)])" class="time time-right">{{message.sentDate | date:'h:mm a'}}</div>
                     <div *ngIf="message.attachmentUrl == ''" class="msg msg-right" [ngClass]="{'startMessageRight' : messageIsStart[messages.indexOf(message)], 'middleMessageRight' : messageIsMiddle[messages.indexOf(message)]}">{{message.message}}</div>
-                    <div *ngIf="message.attachmentUrl != ''" class="attachmentContainerRight">
+                    <div *ngIf="message.attachmentUrl != ''" class="attachmentContainerRight" [ngClass]="{'hasAttachmentMessage' : hasAttachmentMessage[messages.indexOf(message)]}">
                         <img class="attachment" src={{message.attachmentUrl}} alt="attachment">
                     </div>
                 </div>
@@ -51,7 +51,7 @@
     </div>
 
     <div class="input-group mb-3" id="inputGroup">
-        <input (keyUp.enter)="sendMessage()" [(ngModel)]="messageText" #ctrl="ngModel" id="messageInput" type="text" class="form-control" placeholder="Message..." aria-describedby="basic-addon2" autocomplete="off">
+        <input (keyUp.enter)="sendMessage()" [(ngModel)]="messageText" #ctrl="ngModel" id="messageInput" type="text" class="form-control" placeholder="Message" aria-describedby="basic-addon2" autocomplete="off">
         <div class="input-group-append">
             <button (click)="sendMessage()" id="sendButton" class="btn btn-outline-secondary" type="button">Send</button>
         </div>

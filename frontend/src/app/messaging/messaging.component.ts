@@ -19,9 +19,12 @@ export class MessagingComponent implements OnInit, AfterViewChecked {
   messageIsMiddle : boolean[] = [];
   messageIsEnd : boolean[] = [];
   needsDateSeparator : boolean[] = [];
+  hasAttachmentMessage : boolean[] = [];
 
   messageText : string = '';
   otherPerson : UserProfile;
+
+  myUsername : string;
 
   isInquiry : boolean = false;
   inquiryImage : string;
@@ -36,6 +39,8 @@ export class MessagingComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit(): void {
+    this.myUsername = this.internalInteractionService.currentUser.username;
+
     // get the person we're messaging
     this.otherPerson = this.internalInteractionService.viewingUser;
 
@@ -61,6 +66,7 @@ export class MessagingComponent implements OnInit, AfterViewChecked {
     this.messageIsMiddle = [];
     this.messageIsEnd = [];
     this.needsDateSeparator = [];
+    this.hasAttachmentMessage = [];
 
     if (this.messages == null || this.messages.length == 0){
       return;
@@ -90,6 +96,14 @@ export class MessagingComponent implements OnInit, AfterViewChecked {
         this.needsDateSeparator.push(true)
       } else {
         this.needsDateSeparator.push(this.messages[counter].sentDate.getDay() != this.messages[counter - 1].sentDate.getDay())
+      }
+
+      if (this.messages[counter].attachmentUrl.trim() == ''){
+        this.hasAttachmentMessage.push(false);
+      } else if (this.messagesMatch(counter, counter + 1)){
+        this.hasAttachmentMessage.push(true);
+      } else {
+        this.hasAttachmentMessage.push(false);
       }
 
       counter++;

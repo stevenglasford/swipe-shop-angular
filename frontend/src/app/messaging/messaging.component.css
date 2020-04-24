@@ -183,3 +183,7 @@
     font-size: 0.8em;
     color: rgb(158, 158, 158);
 }
+
+.hasAttachmentMessage {
+    margin-bottom: 0;
+}
