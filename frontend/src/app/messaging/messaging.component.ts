@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewChecked, ElementRef, ViewChild } from '@ang
 import { InternalInteractionService } from '../internal-interaction.service';
 import { DataInteractionService } from '../data-interaction.service';
 import { Message } from '../message';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-messaging',
@@ -21,14 +22,12 @@ export class MessagingComponent implements OnInit, AfterViewChecked {
   messageText : string = '';
 
 
-  constructor(private internalInteractionService : InternalInteractionService, private dataInteractionService : DataInteractionService) { }
+  constructor(private internalInteractionService : InternalInteractionService, private dataInteractionService : DataInteractionService, private router : Router) { }
 
   ngAfterViewChecked(){
     try{
       this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
-    } catch {
-
-    }
+    } catch {}
   }
 
   ngOnInit(): void {
@@ -36,11 +35,9 @@ export class MessagingComponent implements OnInit, AfterViewChecked {
 
 
     // get our messages from the database
+    console.log(this.internalInteractionService.viewingUser)
     this.messages = this.dataInteractionService.pullMessages(this.internalInteractionService.viewingUser);
-
     this.updateMessageArrays();
-
-    
   }
 
   updateMessageArrays(){
@@ -48,6 +45,10 @@ export class MessagingComponent implements OnInit, AfterViewChecked {
     this.messageIsMiddle = [];
     this.messageIsEnd = [];
     this.needsDateSeparator = [];
+
+    if (this.messages == null || this.messages.length == 0){
+      return;
+    }
 
     var counter = 0;
     this.messages.forEach(() => {
@@ -94,7 +95,7 @@ export class MessagingComponent implements OnInit, AfterViewChecked {
   messagesMatch(index1 : number, index2 : number){
     try {
       return this.messages[index1].sentDate.getDate() == this.messages[index2].sentDate.getDate()
-          && this.messages[index1].toUsername == this.messages[index2].toUsername;
+          && this.messages[index1].toUser.username == this.messages[index2].toUser.username;
     } catch {
       return false;
     }
@@ -102,11 +103,15 @@ export class MessagingComponent implements OnInit, AfterViewChecked {
 
   sendMessage(){
     // temp
-    this.dataInteractionService.sendMessage(this.messageText, 'beastmaster69');
+    this.dataInteractionService.sendMessage(this.messageText, this.internalInteractionService.viewingUser);
     this.messageText = '';
     this.messages = this.dataInteractionService.pullMessages(this.internalInteractionService.viewingUser);
     this.updateMessageArrays();
-    
+  }
+
+  back(){
+    this.internalInteractionService.viewingUser = null;
+    this.router.navigateByUrl('/messages');
   }
 
 }

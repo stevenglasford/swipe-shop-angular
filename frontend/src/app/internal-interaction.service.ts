@@ -9,7 +9,7 @@ import { UserProfile } from './user-profile';
 export class InternalInteractionService {
 
   currentUser : UserProfile;
-  viewingUser : number;
+  viewingUser : UserProfile;
   currentListing : ListingComponent;
 
   constructor() { }

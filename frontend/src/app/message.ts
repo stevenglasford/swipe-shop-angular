@@ -1,16 +1,14 @@
-import { from } from 'rxjs'
+import { UserProfile } from './user-profile';
 
 export class Message {
-    public toUsername : string
-    public fromUsername : string
-    public otherUserPictureUrl : string
+    public toUser : UserProfile
+    public fromUser : UserProfile
     public message : string
     public sentDate : Date
 
-    constructor(toUsername : string, fromUsername : string, otherUserPictureUrl : string, message : string, sentDate : Date) {
-        this.toUsername = toUsername;
-        this.fromUsername = fromUsername;
-        this.otherUserPictureUrl = otherUserPictureUrl;
+    constructor(toUser : UserProfile, fromUser : UserProfile, message : string, sentDate : Date) {
+        this.toUser = toUser;
+        this.fromUser = fromUser;
         this.message = message;
         this.sentDate = sentDate;
     }
