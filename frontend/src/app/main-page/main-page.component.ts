@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ListingObject } from '../listing_object';
+import { ListingObject } from '../listing-object';
 import { DataInteractionService } from '../data-interaction.service';
 
 @Component({
@@ -9,10 +9,9 @@ import { DataInteractionService } from '../data-interaction.service';
 })
 export class MainPageComponent implements OnInit {
 
-  dataInteractionService = new DataInteractionService();
   listingObject : ListingObject;
 
-  constructor() {}
+  constructor(private dataInteractionService : DataInteractionService) {}
 
   ngOnInit(): void {
     this.newListing()

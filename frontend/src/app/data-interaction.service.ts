@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ListingObject } from './listing_object';
+import { ListingObject } from './listing-object';
 import { Message } from './message';
+import { UserProfile } from './user-profile';
+import { InternalInteractionService } from './internal-interaction.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,7 @@ import { Message } from './message';
 export class DataInteractionService {
 
   // temporary
-  listingQueue : ListingObject[] = [
+  listings : ListingObject[] = [
     new ListingObject(3.0, "Fargo", "My stupid cat", "https://i.imgur.com/Ss75Vfa.jpg", "beastslayer69"),
     new ListingObject(6.0, "Bismarck", "My stupid dogs", "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "some.user"),
     new ListingObject(9.0, "Grand Forks", "My stupid phone", "https://scx1.b-cdn.net/csz/news/800/2015/howwilldatar.jpg", "someother.user"),
@@ -43,9 +45,21 @@ export class DataInteractionService {
     new Message('terry.crews', 'random.person21', 'https://i.imgur.com/Ss75Vfa.jpg', 'My bad', new Date('2020-04-22T18:38:00')),
   ]
 
+  constructor(private internalInteractionService : InternalInteractionService) {
+    // temp
+    let profile : UserProfile = new UserProfile(0, 'terry.poop', 'https://instagram.fbis1-1.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/80700636_1316934521848417_2145641206340495929_n.jpg?_nc_ht=instagram.fbis1-1.fna.fbcdn.net&_nc_cat=101&_nc_ohc=bCMGfISCMzkAX8RNqHK&oh=b49271d6c40038d8bed05190ca3195d7&oe=5EC907D8', 'Fargo, ND', this.listings);
+    this.internalInteractionService.currentUser = profile;
+  }
 
 
-  constructor() {}
+  login(username : string, password : string){
+    // return a profile object
+
+    //temp
+    let profile : UserProfile = null;
+    this.internalInteractionService.currentUser = profile;
+  }
+
 
   pullNewListing(){
     // pull a listing from the database
@@ -57,23 +71,23 @@ export class DataInteractionService {
     // return the ListingObject
 
     // temporary
-    return this.listingQueue[Math.floor(Math.random() * this.listingQueue.length)]  
+    return this.listings[Math.floor(Math.random() * this.listings.length)]  
   }
 
-  pullMyListings(){
-    // query database to find listings with my id
+  // pullMyListings(){
+  //   // query database to find listings with my id
 
-    // temporary
-    return [
-      new ListingObject(3.0, "Fargo", "My stupid cat", "https://i.imgur.com/Ss75Vfa.jpg", "beastslayer69"),
-      new ListingObject(6.0, "Bismarck", "My stupid dogs", "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "some.user"),
-      new ListingObject(9.0, "Grand Forks", "My stupid phone", "https://scx1.b-cdn.net/csz/news/800/2015/howwilldatar.jpg", "someother.user"),
-      new ListingObject(12.0, "Minneapolis", "My stupid cow Betsy", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYW0XEqHljEUNvoFfmEEpM7Z4cyq5V66MNrLyXerInvBFM5KUc&usqp=CAU", "random.person21"),
-      new ListingObject(16.50, "Jamestown", "My stupid used car", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ4B2mpOFXbAnsupjbRiAUambtV6jhyb4lx0sJuZOvp-s-VKjUS&usqp=CAU", "kanye.west"),
-      new ListingObject(300.0, "Los Angeles", "My stupid grandma", "https://peoplescience.maritz.com/-/media/Maritz/Project/PeopleScience/Articles/adult-grandma-elderly-432722.ashx?h=900&w=1200&la=en&hash=5F66C65B032FEE90B10A489D08EC8B7D0E64B8CE", "kungfu.kenny"),
-      new ListingObject(34.0, "Germany", "My stupid science teacher", "https://pbs.twimg.com/profile_images/879355674957926400/VSGZHGib_400x400.jpg", "some.guy")
-    ];
-  }
+  //   // temporary
+  //   return [
+  //     new ListingObject(3.0, "Fargo", "My stupid cat", "https://i.imgur.com/Ss75Vfa.jpg", "beastslayer69"),
+  //     new ListingObject(6.0, "Bismarck", "My stupid dogs", "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "some.user"),
+  //     new ListingObject(9.0, "Grand Forks", "My stupid phone", "https://scx1.b-cdn.net/csz/news/800/2015/howwilldatar.jpg", "someother.user"),
+  //     new ListingObject(12.0, "Minneapolis", "My stupid cow Betsy", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYW0XEqHljEUNvoFfmEEpM7Z4cyq5V66MNrLyXerInvBFM5KUc&usqp=CAU", "random.person21"),
+  //     new ListingObject(16.50, "Jamestown", "My stupid used car", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ4B2mpOFXbAnsupjbRiAUambtV6jhyb4lx0sJuZOvp-s-VKjUS&usqp=CAU", "kanye.west"),
+  //     new ListingObject(300.0, "Los Angeles", "My stupid grandma", "https://peoplescience.maritz.com/-/media/Maritz/Project/PeopleScience/Articles/adult-grandma-elderly-432722.ashx?h=900&w=1200&la=en&hash=5F66C65B032FEE90B10A489D08EC8B7D0E64B8CE", "kungfu.kenny"),
+  //     new ListingObject(34.0, "Germany", "My stupid science teacher", "https://pbs.twimg.com/profile_images/879355674957926400/VSGZHGib_400x400.jpg", "some.guy")
+  //   ];
+  // }
 
   hateItem(object : ListingObject){
     // tell the database not to show us this item again
@@ -99,7 +113,7 @@ export class DataInteractionService {
     // query the database for all items I've liked
 
     // temp
-    return this.listingQueue;
+    return this.listings;
   }
 
 
@@ -115,6 +129,15 @@ export class DataInteractionService {
   sendMessage(messageText : string, recipientUsername : string){
     // temp
     this.messagesFromOneUser.push(new Message(recipientUsername, 'terry.crews', '', messageText, new Date()));
+  }
+
+  pullProfile(id : number){
+    // query database for user with this ID, and return a UserProfile object
+
+
+    // temp
+    return this.internalInteractionService.currentUser;
+
   }
 
 

@@ -36,7 +36,7 @@ export class MessagingComponent implements OnInit, AfterViewChecked {
 
 
     // get our messages from the database
-    this.messages = this.dataInteractionService.pullMessages(this.internalInteractionService.getViewingUser());
+    this.messages = this.dataInteractionService.pullMessages(this.internalInteractionService.viewingUser);
 
     this.updateMessageArrays();
 
@@ -104,7 +104,7 @@ export class MessagingComponent implements OnInit, AfterViewChecked {
     // temp
     this.dataInteractionService.sendMessage(this.messageText, 'beastmaster69');
     this.messageText = '';
-    this.messages = this.dataInteractionService.pullMessages(this.internalInteractionService.getViewingUser());
+    this.messages = this.dataInteractionService.pullMessages(this.internalInteractionService.viewingUser);
     this.updateMessageArrays();
     
   }

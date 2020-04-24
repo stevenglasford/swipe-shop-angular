@@ -1,18 +1,16 @@
 import { Injectable } from '@angular/core';
 import { ListingComponent } from './listing/listing.component';
+import { UserProfile } from './user-profile';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class InternalInteractionService {
 
+  currentUser : UserProfile;
+  viewingUser : number;
   currentListing : ListingComponent;
-  viewingUserID : number = 6;
 
   constructor() { }
-
-  getViewingUser(){
-    return this.viewingUserID;
-  }
-
 }

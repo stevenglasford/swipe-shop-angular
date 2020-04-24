@@ -1,31 +1,25 @@
 <app-header></app-header>
+
 <div class="container" id="profileInfo">
-    <img src="https://instagram.fbis1-1.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/80700636_1316934521848417_2145641206340495929_n.jpg?_nc_ht=instagram.fbis1-1.fna.fbcdn.net&_nc_cat=101&_nc_ohc=bCMGfISCMzkAX8RNqHK&oh=b49271d6c40038d8bed05190ca3195d7&oe=5EC907D8"
-        alt="profile picture" id="profilePicture">
-    <h1 id="username">terry.crews</h1>
+    <img src={{userProfile.picture}} alt="profile picture" id="profilePicture">
+    <h1 id="username">{{userProfile.username}}</h1>
     <div class="row" id="locationRow">
         <div class="col"></div>
         <div class="col-auto">
             <img src="../assets/location.png" alt="location">
         </div>
         <div class="col-auto">
-            <h5 id="location">Fargo, ND</h5>
+            <h5 id="location">{{userProfile.location}}</h5>
         </div>
         <div class="col"></div>
     </div>
-
-    <button class="btn btn-light" id="editProfileButton" (click)="editProfile()">Edit Profile</button>
-
+    <button *ngIf="isMyProfile" class="btn btn-light" id="editProfileButton" (click)="editProfile()">Edit Profile</button>
 </div>
 
-<div class="container" id="newListingContainer">
-
+<div *ngIf="isMyProfile" class="container" id="newListingContainer">
     <button class="btn btn-dark" id="newListingButton">New Listing</button>
-
 </div>
 
 <div class="container" id="listings">
-
-    <app-listing-card *ngFor="let object of myListings" [listingObject]="object"></app-listing-card>
-
+    <app-listing-card *ngFor="let object of userProfile.listings" [listingObject]="object"></app-listing-card>
 </div>

@@ -9,11 +9,11 @@ import { Message } from '../message';
 })
 export class MessagesComponent implements OnInit {
 
-  dataInteractionService = new DataInteractionService();
+  // dataInteractionService = new DataInteractionService();
 
   messagePreviews : Message[];
 
-  constructor() { }
+  constructor(private dataInteractionService : DataInteractionService) { }
 
   ngOnInit(): void {
     this.messagePreviews = this.dataInteractionService.pullMessagePreviews();
