@@ -1,7 +1,13 @@
 <div id="container">
     <app-header></app-header>
+    <button (click)="back()" id="back" class="btn btn-dark">Back</button>
     <div #scrollable id="messages">
         <div id="messagesInner">
+            <div *ngIf="messages.length == 0" class="newDay">
+                No Messages
+                <hr class="solid">
+            </div>
+
             <div *ngFor="let message of messages" class="message">
 
                 <div *ngIf="needsDateSeparator[messages.indexOf(message)]" class="newDay">
@@ -9,15 +15,13 @@
                     <hr class="solid">
                 </div>
 
-
-
-                <div *ngIf="message.toUsername == 'terry.crews'" class="messages-left">
+                <div *ngIf="message.toUser.username == 'terry.crews'" class="messages-left">
                     <div *ngIf="!(messageIsMiddle[messages.indexOf(message)] || messageIsEnd[messages.indexOf(message)])" class="time time-left">{{message.sentDate | date:'h:mm a'}}</div>
-                    <img class="messageProfilePicture" src={{message.otherUserPictureUrl}} alt="profile">
+                    <img class="messageProfilePicture" src="{{message.fromUser.picture}}" alt="profile">
                     <div class="msg msg-left" [ngClass]="{'startMessageLeft' : messageIsStart[messages.indexOf(message)], 'middleMessageLeft' : messageIsMiddle[messages.indexOf(message)]}">{{message.message}}</div>
                 </div>
 
-                <div *ngIf="message.toUsername != 'terry.crews'" class="messages-right">
+                <div *ngIf="message.toUser.username != 'terry.crews'" class="messages-right">
                     <div *ngIf="!(messageIsMiddle[messages.indexOf(message)] || messageIsEnd[messages.indexOf(message)])" class="time time-right">{{message.sentDate | date:'h:mm a'}}</div>
                     <div class="msg msg-right" [ngClass]="{'startMessageRight' : messageIsStart[messages.indexOf(message)], 'middleMessageRight' : messageIsMiddle[messages.indexOf(message)]}">{{message.message}}</div>
                 </div>

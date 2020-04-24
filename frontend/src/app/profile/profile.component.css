@@ -1,6 +1,7 @@
 #profilePicture {
     height: 200px;
     width: 200px;
+    object-fit: cover;
     border-radius: 100%;
     margin-bottom: 10px;
     box-shadow: 5px 5px 15px grey;

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Message } from '../message';
 import { Router } from '@angular/router';
+import { InternalInteractionService } from '../internal-interaction.service';
+import { UserProfile } from '../user-profile';
 
 @Component({
   selector: 'app-message-card',
@@ -12,10 +14,22 @@ export class MessageCardComponent implements OnInit {
   @Input() message : Message;
 
   agoTime : String = "2d";
+  otherUser : UserProfile;
+  thisUser : UserProfile;
 
-  constructor(private router : Router) { }
+  constructor(private router : Router, private internalInteractionService : InternalInteractionService) { }
 
   ngOnInit(): void {
+    // determine which of the profiles on the message is the other user, to display their picture
+    if (this.internalInteractionService.currentUser == this.message.toUser){
+      this.otherUser = this.message.fromUser;
+      this.thisUser = this.message.toUser;
+    } else {
+      this.otherUser = this.message.toUser;
+      this.thisUser = this.message.fromUser;
+    }
+
+
     let now = new Date();
 
     var diff = Math.abs(now.getTime() - this.message.sentDate.getTime());
@@ -47,6 +61,7 @@ export class MessageCardComponent implements OnInit {
   }
 
   onClick(){
+    this.internalInteractionService.viewingUser = this.otherUser;
     this.router.navigateByUrl('/messaging');
   }
 
