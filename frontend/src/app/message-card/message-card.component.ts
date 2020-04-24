@@ -62,6 +62,7 @@ export class MessageCardComponent implements OnInit {
 
   onClick(){
     this.internalInteractionService.viewingUser = this.otherUser;
+    this.internalInteractionService.lastAt = 'messages';
     this.router.navigateByUrl('/messaging');
   }
 

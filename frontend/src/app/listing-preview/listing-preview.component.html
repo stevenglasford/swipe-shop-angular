@@ -1,7 +1,8 @@
 <div class="card" (click)="onClicked()">
     <div class="card-contents">
         <img src={{listingObject.imageUrl}} alt="picture">
-        <p id="namePrice"><b>{{listingObject.description}} - ${{listingObject.price}}</b></p>
-        <p id="username">{{listingObject.username}}</p>
+        <p class="name"><b>{{listingObject.description}}</b></p>
+        <p class="price">{{listingObject.price | currency}}</p>
+        <p class="username">{{listingObject.userProfile.username}}</p>
     </div>
 </div>

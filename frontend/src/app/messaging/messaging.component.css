@@ -117,4 +117,69 @@
 
 #back {
     border-radius: 0;
+    display: inline;
+}
+
+#backIcon {
+    height: 20px;
+    width: 20px;
+    margin: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#backIcon2 {
+    height: 20px;
+    width: 20px;
+    margin: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 5px;
+    visibility: hidden;
+}
+
+#rightSpace {
+    margin-right: 40px;
+}
+
+#otherUser {
+    font-size: 1.2em;
+    font-weight: 600;
+    background-color: rgb(247, 247, 247);
+    padding: 5px;
+    box-shadow: 5px 5px 15px rgba(128, 128, 128, 0.384);
+}
+
+.attachment {
+    border-radius: 10px;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+}
+
+.attachmentContainerLeft {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.attachmentContainerRight {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.attachmentMessageText {
+    margin-top: 50px;
+    margin-right: 4px;
+    margin-bottom: 0;
+    font-size: 0.8em;
+    color: rgb(158, 158, 158);
+}
+
+.attachmentMessageTextCont {
+    margin-bottom: 5px;
+    margin-right: 4px;
+    font-size: 0.8em;
+    color: rgb(158, 158, 158);
 }

@@ -1,6 +1,11 @@
 <div id="container">
     <app-header></app-header>
-    <button (click)="back()" id="back" class="btn btn-dark">Back</button>
+
+    <div id="otherUser" class="d-flex justify-content-between">
+        <img (click)="back()" id="backIcon" src="../assets/back.png" alt="back">
+        <div>{{otherPerson.username}}</div>
+        <div id="rightSpace"></div>
+    </div>
     <div #scrollable id="messages">
         <div id="messagesInner">
             <div *ngIf="messages.length == 0" class="newDay">
@@ -10,6 +15,7 @@
 
             <div *ngFor="let message of messages" class="message">
 
+
                 <div *ngIf="needsDateSeparator[messages.indexOf(message)]" class="newDay">
                     {{message.sentDate | date:'EEEE, MMMM d'}}
                     <hr class="solid">
@@ -17,21 +23,35 @@
 
                 <div *ngIf="message.toUser.username == 'terry.crews'" class="messages-left">
                     <div *ngIf="!(messageIsMiddle[messages.indexOf(message)] || messageIsEnd[messages.indexOf(message)])" class="time time-left">{{message.sentDate | date:'h:mm a'}}</div>
-                    <img class="messageProfilePicture" src="{{message.fromUser.picture}}" alt="profile">
-                    <div class="msg msg-left" [ngClass]="{'startMessageLeft' : messageIsStart[messages.indexOf(message)], 'middleMessageLeft' : messageIsMiddle[messages.indexOf(message)]}">{{message.message}}</div>
+                    <img *ngIf="message.attachmentUrl == ''" class="messageProfilePicture" src="{{message.fromUser.picture}}" alt="profile">
+                    <div *ngIf="message.attachmentUrl == ''" class="msg msg-left" [ngClass]="{'startMessageLeft' : messageIsStart[messages.indexOf(message)], 'middleMessageLeft' : messageIsMiddle[messages.indexOf(message)]}">{{message.message}}</div>
+
+                    <div *ngIf="message.attachmentUrl != ''" class="attachmentLeft">
+                        <img class="attachment" src={{message.attachmentUrl}} alt="attachment">
+                    </div>
+
                 </div>
 
                 <div *ngIf="message.toUser.username != 'terry.crews'" class="messages-right">
                     <div *ngIf="!(messageIsMiddle[messages.indexOf(message)] || messageIsEnd[messages.indexOf(message)])" class="time time-right">{{message.sentDate | date:'h:mm a'}}</div>
-                    <div class="msg msg-right" [ngClass]="{'startMessageRight' : messageIsStart[messages.indexOf(message)], 'middleMessageRight' : messageIsMiddle[messages.indexOf(message)]}">{{message.message}}</div>
+                    <div *ngIf="message.attachmentUrl == ''" class="msg msg-right" [ngClass]="{'startMessageRight' : messageIsStart[messages.indexOf(message)], 'middleMessageRight' : messageIsMiddle[messages.indexOf(message)]}">{{message.message}}</div>
+                    <div *ngIf="message.attachmentUrl != ''" class="attachmentContainerRight">
+                        <img class="attachment" src={{message.attachmentUrl}} alt="attachment">
+                    </div>
                 </div>
-
             </div>
+
+            <div *ngIf="isInquiry" class="attachmentContainerRight">
+                <div class="attachmentMessageText">This attachment will be</div>
+                <div class="attachmentMessageTextCont">sent with your message</div>
+                <img class="attachment" src={{inquiryImage}} alt="inquiring">
+            </div>
+
         </div>
     </div>
 
     <div class="input-group mb-3" id="inputGroup">
-        <input (keyUp.enter)="sendMessage()" [(ngModel)]="messageText" #ctrl="ngModel" id="messageInput" type="text" class="form-control" placeholder="Message" aria-describedby="basic-addon2">
+        <input (keyUp.enter)="sendMessage()" [(ngModel)]="messageText" #ctrl="ngModel" id="messageInput" type="text" class="form-control" placeholder="Message..." aria-describedby="basic-addon2" autocomplete="off">
         <div class="input-group-append">
             <button (click)="sendMessage()" id="sendButton" class="btn btn-outline-secondary" type="button">Send</button>
         </div>

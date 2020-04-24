@@ -22,12 +22,15 @@ img {
     box-shadow: 5px 5px 25px rgba(128, 128, 128, 0.384);
 }
 
-#namePrice {
+.name {
     margin-top: 15px;
-    margin-bottom: 0;
+    margin-bottom: 5px;
 }
 
-#username {
-    margin-top: 5px;
+.price {
+    margin-bottom: 5px;
+}
+
+.username {
     margin-bottom: 0;
 }

@@ -3,6 +3,7 @@ import { InternalInteractionService } from '../internal-interaction.service';
 import { DataInteractionService } from '../data-interaction.service';
 import { Message } from '../message';
 import { Router } from '@angular/router';
+import { UserProfile } from '../user-profile';
 
 @Component({
   selector: 'app-messaging',
@@ -20,6 +21,10 @@ export class MessagingComponent implements OnInit, AfterViewChecked {
   needsDateSeparator : boolean[] = [];
 
   messageText : string = '';
+  otherPerson : UserProfile;
+
+  isInquiry : boolean = false;
+  inquiryImage : string;
 
 
   constructor(private internalInteractionService : InternalInteractionService, private dataInteractionService : DataInteractionService, private router : Router) { }
@@ -32,12 +37,23 @@ export class MessagingComponent implements OnInit, AfterViewChecked {
 
   ngOnInit(): void {
     // get the person we're messaging
+    this.otherPerson = this.internalInteractionService.viewingUser;
 
+    if (this.internalInteractionService.viewingListing != null){
+      this.isInquiry = true;
+      console.log(this.internalInteractionService.viewingListing)
+      this.inquiryImage = this.internalInteractionService.viewingListing.imageUrl;
+    }
 
     // get our messages from the database
     console.log(this.internalInteractionService.viewingUser)
-    this.messages = this.dataInteractionService.pullMessages(this.internalInteractionService.viewingUser);
-    this.updateMessageArrays();
+    try {
+      this.messages = this.dataInteractionService.pullMessages(this.internalInteractionService.viewingUser);
+      this.updateMessageArrays();
+    } catch {
+      this.router.navigateByUrl('messages')
+    }
+    
   }
 
   updateMessageArrays(){
@@ -95,6 +111,8 @@ export class MessagingComponent implements OnInit, AfterViewChecked {
   messagesMatch(index1 : number, index2 : number){
     try {
       return this.messages[index1].sentDate.getDate() == this.messages[index2].sentDate.getDate()
+          && this.messages[index1].sentDate.getHours() == this.messages[index2].sentDate.getHours()
+          && this.messages[index1].sentDate.getMinutes() == this.messages[index2].sentDate.getMinutes()
           && this.messages[index1].toUser.username == this.messages[index2].toUser.username;
     } catch {
       return false;
@@ -102,16 +120,26 @@ export class MessagingComponent implements OnInit, AfterViewChecked {
   }
 
   sendMessage(){
-    // temp
-    this.dataInteractionService.sendMessage(this.messageText, this.internalInteractionService.viewingUser);
-    this.messageText = '';
-    this.messages = this.dataInteractionService.pullMessages(this.internalInteractionService.viewingUser);
-    this.updateMessageArrays();
+    if (this.messageText.trim() != ''){
+      if (this.isInquiry){
+        this.dataInteractionService.sendMessage('', this.inquiryImage, this.internalInteractionService.viewingUser);
+        this.internalInteractionService.viewingListing = null;
+        this.isInquiry = false;
+        this.inquiryImage = '';
+      }
+  
+      this.dataInteractionService.sendMessage(this.messageText, '', this.internalInteractionService.viewingUser);
+      this.messageText = '';
+      this.messages = this.dataInteractionService.pullMessages(this.internalInteractionService.viewingUser);
+
+      this.updateMessageArrays();
+    }
   }
 
   back(){
     this.internalInteractionService.viewingUser = null;
-    this.router.navigateByUrl('/messages');
+    
+    this.router.navigateByUrl(this.internalInteractionService.lastAt);
   }
 
 }
