@@ -3,6 +3,7 @@ import { Message } from '../message';
 import { Router } from '@angular/router';
 import { InternalInteractionService } from '../internal-interaction.service';
 import { UserProfile } from '../user-profile';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-message-card',
@@ -17,11 +18,11 @@ export class MessageCardComponent implements OnInit {
   otherUser : UserProfile;
   thisUser : UserProfile;
 
-  constructor(private router : Router, private internalInteractionService : InternalInteractionService) { }
+  constructor(private cookieService : CookieService, private router : Router, private internalInteractionService : InternalInteractionService) { }
 
   ngOnInit(): void {
     // determine which of the profiles on the message is the other user, to display their picture
-    if (this.internalInteractionService.currentUser == this.message.toUser){
+    if (this.cookieService.get('username') == this.message.toUser.username){
       this.otherUser = this.message.fromUser;
       this.thisUser = this.message.toUser;
     } else {

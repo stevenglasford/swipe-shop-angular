@@ -22,39 +22,31 @@ export class MessagesComponent implements OnInit {
     this.db.collection<any>('messages').ref.get().then(res => {
       res.forEach(message => {
 
-        var userTo = null;
-        this.db.collection<any>('users').ref.where('username', '==', message.data()['userTo']).get().then(res => {
-          res.forEach(user => {
-            userTo = new UserProfile(user.data()['userId'], name, user.data()['profilePictureUrl'], user.data()['location'], [])
-          })
-
+        if (message.data()['userFrom'] == this.cookieService.get('username') || message.data()['userTo'] == this.cookieService.get('username')){
+          var userTo = null;
           var userFrom = null;
-          this.db.collection<any>('users').ref.where('username', '==', message.data()['userFrom']).get().then(res => {
+
+          this.db.collection<any>('users').ref.where('username', '==', message.data()['userTo']).get().then(res => {
             res.forEach(user => {
-              userFrom = new UserProfile(user.data()['userId'], name, user.data()['profilePictureUrl'], user.data()['location'], [])
+              userTo = new UserProfile(user.data()['userId'], user.data()['username'], user.data()['profilePictureUrl'], user.data()['location'], [])
             })
-            
-            allMessages.push(new Message(userTo, userFrom, userFrom.location, new Date((message.data()['time'])), message.data()['attachmentUrl']))
+  
+            this.db.collection<any>('users').ref.where('username', '==', message.data()['userFrom']).get().then(res => {
+              res.forEach(user => {
+                userFrom = new UserProfile(user.data()['userId'], user.data()['username'], user.data()['profilePictureUrl'], user.data()['location'], [])
+              })
+  
+              allMessages.push(new Message(userTo, userFrom, userFrom.location, new Date((message.data()['time'])), message.data()['attachmentUrl']))
+            });
           });
-        });
+        }
       })
     });
-
-    console.log(allMessages);
         
-    // now filter down to what we want
-
+    // now filter down to what we want?
     this.messagePreviews = allMessages;
 
-    
-  }
 
-  userProfileFromUsername(name : string){
-    this.db.collection<any>('users').ref.where('username', '==', name).get().then(res => {
-      res.forEach(user => {
-        return new UserProfile(user.data()['userId'], name, user.data()['profilePictureUrl'], user.data()['location'], [])
-      })
-    });
   }
 
 }
