@@ -33,19 +33,20 @@ export class MessagesComponent implements OnInit {
             res.forEach(user => {
               userFrom = new UserProfile(user.data()['userId'], name, user.data()['profilePictureUrl'], user.data()['location'], [])
             })
-
             
             allMessages.push(new Message(userTo, userFrom, userFrom.location, new Date((message.data()['time'])), message.data()['attachmentUrl']))
-
-            // now filter to what we want
-
-            this.messagePreviews = allMessages;
-
-
           });
         });
       })
     });
+
+    console.log(allMessages);
+        
+    // now filter down to what we want
+
+    this.messagePreviews = allMessages;
+
+    
   }
 
   userProfileFromUsername(name : string){
