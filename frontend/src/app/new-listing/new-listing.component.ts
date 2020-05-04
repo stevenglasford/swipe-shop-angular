@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataInteractionService } from '../data-interaction.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-listing',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewListingComponent implements OnInit {
 
-  constructor() { }
+  imageUrl : string;
+  name : string;
+  price : number;
+
+  constructor(private dataInteractionService : DataInteractionService, private router : Router) { }
 
   ngOnInit(): void {
+  }
+
+  submit(){
+    if (this.imageUrl != '' && this.name != '' && this.price != null){
+      this.dataInteractionService.addListing(this.imageUrl, this.name, this.price);
+      this.router.navigateByUrl('profile');
+    }
   }
 
 }

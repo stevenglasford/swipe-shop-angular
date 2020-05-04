@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataInteractionService } from '../data-interaction.service';
 import { UserProfile } from '../user-profile';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +15,7 @@ export class ProfileComponent implements OnInit {
   // make this dynamic
   isMyProfile : boolean = true;
 
-  constructor(private dataInteractionService : DataInteractionService) { }
+  constructor(private dataInteractionService : DataInteractionService, private router : Router) { }
 
   ngOnInit(): void {
     this.userProfile = this.dataInteractionService.pullProfile(0);
@@ -23,6 +24,10 @@ export class ProfileComponent implements OnInit {
 
   editProfile(){
     console.log('editing profile')
+  }
+
+  newListing(){
+    this.router.navigateByUrl('new-listing')
   }
 
 }

@@ -6,6 +6,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { LikesComponent } from './likes/likes.component';
 import { MessagingComponent } from './messaging/messaging.component';
 import { LoginComponent } from './login/login.component';
+import { NewListingComponent } from './new-listing/new-listing.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'likes', component: LikesComponent },
   { path: 'messaging', component: MessagingComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'new-listing', component: NewListingComponent },
 ];
 
 @NgModule({

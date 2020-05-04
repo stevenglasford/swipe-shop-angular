@@ -77,6 +77,9 @@ export class DataInteractionService {
   login(username : string, password : string){
     // return a profile object
 
+    
+    // set internal interaction service to this user profile
+
     //temp
     let profile : UserProfile = null;
     this.internalInteractionService.currentUser = profile;
@@ -84,7 +87,7 @@ export class DataInteractionService {
 
 
   pullNewListing(){
-    // pull a listing from the database
+    // pull a listing from the database where not in hates or likes
 
 
     // parse the data into an ListingObject
@@ -95,21 +98,6 @@ export class DataInteractionService {
     // temporary
     return this.listings[Math.floor(Math.random() * this.listings.length)]  
   }
-
-  // pullMyListings(){
-  //   // query database to find listings with my id
-
-  //   // temporary
-  //   return [
-  //     new ListingObject(3.0, "Fargo", "My stupid cat", "https://i.imgur.com/Ss75Vfa.jpg", "beastslayer69"),
-  //     new ListingObject(6.0, "Bismarck", "My stupid dogs", "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "some.user"),
-  //     new ListingObject(9.0, "Grand Forks", "My stupid phone", "https://scx1.b-cdn.net/csz/news/800/2015/howwilldatar.jpg", "someother.user"),
-  //     new ListingObject(12.0, "Minneapolis", "My stupid cow Betsy", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYW0XEqHljEUNvoFfmEEpM7Z4cyq5V66MNrLyXerInvBFM5KUc&usqp=CAU", "random.person21"),
-  //     new ListingObject(16.50, "Jamestown", "My stupid used car", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ4B2mpOFXbAnsupjbRiAUambtV6jhyb4lx0sJuZOvp-s-VKjUS&usqp=CAU", "kanye.west"),
-  //     new ListingObject(300.0, "Los Angeles", "My stupid grandma", "https://peoplescience.maritz.com/-/media/Maritz/Project/PeopleScience/Articles/adult-grandma-elderly-432722.ashx?h=900&w=1200&la=en&hash=5F66C65B032FEE90B10A489D08EC8B7D0E64B8CE", "kungfu.kenny"),
-  //     new ListingObject(34.0, "Germany", "My stupid science teacher", "https://pbs.twimg.com/profile_images/879355674957926400/VSGZHGib_400x400.jpg", "some.guy")
-  //   ];
-  // }
 
   hateItem(object : ListingObject){
     // tell the database not to show us this item again
@@ -169,6 +157,11 @@ export class DataInteractionService {
 
     // temp
     this.listings.splice(this.listings.indexOf(object), 1);
+  }
+
+  addListing(imageUrl : string, name : string, price : number){
+    let curUser = this.internalInteractionService.currentUser;
+    this.listings.push(new ListingObject(price, curUser.location, name, imageUrl, curUser));
   }
 
 
