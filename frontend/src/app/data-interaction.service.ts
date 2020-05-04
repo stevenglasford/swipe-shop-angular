@@ -95,19 +95,35 @@ export class DataInteractionService {
   }
 
   signUp(username : string, password : string){
-    // check if a user with this name exists
-    var userExists = false;
-    this.db.collection('users').snapshotChanges().subscribe(res => {
-      res.forEach((user) => {
-        if (user.payload.doc.data()['username'] == username){
-          userExists = true;
-        }
-      });
-    });
+    // https://stackoverflow.com/questions/41272734/returning-promise-after-firebase-query
 
-    if (userExists){
-      return -1;
-    }
+    // check if a user with this name exists
+    
+    this.db.collection<any>('users').ref.where('username', '==', 'ben.harvey')
+    .get()
+    .then(res => {
+      if (res.docs.length == 0){
+
+      } else {
+        res.forEach(user => {
+          console.log(user.id);
+          console.log(user.data())
+        })
+      }
+    })
+
+    // var userExists = false;
+    // this.db.collection('users').snapshotChanges().subscribe(res => {
+    //   res.forEach((user) => {
+    //     if (user.payload.doc.data()['username'] == username){
+    //       userExists = true;
+    //     }
+    //   });
+    // });
+
+    // if (userExists){
+    //   return -1;
+    // }
 
     return 1;
 
