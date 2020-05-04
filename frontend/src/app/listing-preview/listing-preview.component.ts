@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ListingObject } from '../listing-object';
 import { Router } from '@angular/router';
+import { InternalInteractionService } from '../internal-interaction.service';
 
 @Component({
   selector: 'app-listing-preview',
@@ -11,13 +12,16 @@ export class ListingPreviewComponent implements OnInit {
 
   @Input() listingObject : ListingObject;
 
-  constructor(private router : Router) { }
+  constructor(private router : Router, private internalInteractionService : InternalInteractionService) { }
 
   ngOnInit(): void {
   }
 
   onClicked(){
-    this.router.navigateByUrl('/messaging');
+    this.internalInteractionService.viewingUser = this.listingObject.userProfile;
+    this.internalInteractionService.viewingListing = this.listingObject;
+    this.internalInteractionService.lastAt = 'likes';
+    this.router.navigateByUrl('messaging');
   }
 
 }

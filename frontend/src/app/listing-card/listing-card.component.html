@@ -8,7 +8,7 @@
                 <h5>{{listingObject.description}}</h5>
             </div>
             <div class="col">
-                ${{listingObject.price}}
+                {{listingObject.price | currency}}
             </div>
             <div class="col-auto">
                 <button class="btn btn-light" id="editButton">Edit</button>

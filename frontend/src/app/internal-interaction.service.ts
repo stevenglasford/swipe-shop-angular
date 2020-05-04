@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ListingComponent } from './listing/listing.component';
 import { UserProfile } from './user-profile';
+import { ListingObject } from './listing-object';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +9,9 @@ import { UserProfile } from './user-profile';
 export class InternalInteractionService {
 
   currentUser : UserProfile;
-  viewingUser : UserProfile;
-  currentListing : ListingComponent;
+  viewingUser : UserProfile = null;
+  viewingListing : ListingObject;
+  lastAt : string;
 
   constructor() { }
 }
