@@ -95,7 +95,27 @@ export class DataInteractionService {
   }
 
   signUp(username : string, password : string){
-    
+    // check if a user with this name exists
+    var userExists = false;
+    this.db.collection('users').snapshotChanges().subscribe(res => {
+      res.forEach((user) => {
+        if (user.payload.doc.data()['username'] == username){
+          userExists = true;
+        }
+      });
+    });
+
+    if (userExists){
+      return -1;
+    }
+
+    return 1;
+
+    // return new Promise<any>((resolve, reject) => {
+    //   this.db.collection('messages').add(dbMessage).then(res => {}, err => reject(err));
+    // });
+
+
   }
 
 

@@ -10,6 +10,7 @@ export class SignUpComponent implements OnInit {
 
   username : string;
   password : string;
+  error : boolean = false;
 
   constructor(private dataInteractionService : DataInteractionService) { }
 
@@ -17,7 +18,15 @@ export class SignUpComponent implements OnInit {
   }
 
   signUp(){
-    this.dataInteractionService.signUp(this.username, this.password);
+    if (this.username != '' && this.username != null && this.password != '' && this.password != null){
+      var myId = this.dataInteractionService.signUp(this.username.trim(), this.password.trim());
+      console.log(myId);
+      if (myId == -1){
+        this.error = true;
+        console.log('error')
+      }
+    }
+    
   }
 
 }
