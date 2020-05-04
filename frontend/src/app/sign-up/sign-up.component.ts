@@ -13,6 +13,9 @@ export class SignUpComponent implements OnInit {
 
   username : string;
   password : string;
+  profilePicture : string;
+  location : string;
+
   error : boolean = false;
 
   constructor(private dataInteractionService : DataInteractionService, private db : AngularFirestore, private cookieService : CookieService, private router : Router) { }
@@ -21,7 +24,7 @@ export class SignUpComponent implements OnInit {
   }
 
   signUp(){
-    if (this.username != '' && this.username != null && this.password != '' && this.password != null){
+    if (this.username != '' && this.username != null && this.password != '' && this.password != null && this.location != null && this.location != ''){
       this.db.collection<any>('users').ref.where('username', '==', this.username)
         .get()
         .then(res => {
@@ -42,6 +45,8 @@ export class SignUpComponent implements OnInit {
                 username : this.username,
                 password : this.password, 
                 userId : maxId + 1,
+                profilePictureUrl : this.profilePicture,
+                location : this.location,
               };
 
               return new Promise<any>((resolve, reject) => {

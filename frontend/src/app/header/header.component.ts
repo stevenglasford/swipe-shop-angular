@@ -10,12 +10,15 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   isCollapsed = false;
+  userId : string;
 
   constructor(private cookieService : CookieService, private router : Router) { }
 
   ngOnInit(): void {
     if (this.cookieService.get('userId') == ''){
       this.router.navigateByUrl('login');
+    } else {
+      this.userId = this.cookieService.get('userId');
     }
   }
 
