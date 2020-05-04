@@ -164,5 +164,12 @@ export class DataInteractionService {
 
   }
 
+  removeListing(object : ListingObject){
+    // remove from database
+
+    // temp
+    this.listings.splice(this.listings.indexOf(object), 1);
+  }
+
 
 }

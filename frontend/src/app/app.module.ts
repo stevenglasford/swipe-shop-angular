@@ -14,6 +14,7 @@ import { LikesComponent } from './likes/likes.component';
 import { ListingPreviewComponent } from './listing-preview/listing-preview.component';
 import { MessagingComponent } from './messaging/messaging.component';
 import { LoginComponent } from './login/login.component';
+import { NewListingComponent } from './new-listing/new-listing.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LoginComponent } from './login/login.component';
     LikesComponent,
     ListingPreviewComponent,
     MessagingComponent,
-    LoginComponent
+    LoginComponent,
+    NewListingComponent
   ],
   imports: [
     BrowserModule,
