@@ -28,11 +28,9 @@ export class LikesComponent implements OnInit {
           } else {
             res.forEach(view => {
               if (view.data()['liked']){
-                let docId = view.data()['docId']
-
                 this.db.collection<any>('products').ref.get().then(res => {
                   res.forEach(product => {
-                    if (product.id == docId){
+                    if (product.data()['productId'] == view.data()['productId']){
                       var listingObj = new ListingObject(product.data()['price'], product.data()['location'], product.data()['name'], product.data()['photoUrl'], null)
 
                       this.db.collection<any>('users').ref.where('username', '==', product.data()['owner']).get().then(res => {
@@ -42,11 +40,6 @@ export class LikesComponent implements OnInit {
 
                         this.listingObjects.push(listingObj);
                       })
-
-                      
-
-                      
-
                     }
                   })
                 })
