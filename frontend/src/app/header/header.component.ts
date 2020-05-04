@@ -11,6 +11,8 @@ export class HeaderComponent implements OnInit {
 
   isCollapsed = false;
   userId : string;
+  username : string;
+  location : string;
 
   constructor(private cookieService : CookieService, private router : Router) { }
 
@@ -19,6 +21,8 @@ export class HeaderComponent implements OnInit {
       this.router.navigateByUrl('login');
     } else {
       this.userId = this.cookieService.get('userId');
+      this.username = this.cookieService.get('username');
+      this.location = this.cookieService.get('location');
     }
   }
 

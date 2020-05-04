@@ -35,6 +35,8 @@ export class LoginComponent implements OnInit {
                 // successful login
                 successful = true;
                 this.cookieService.set('userId', user.data()['userId']);
+                this.cookieService.set('username', user.data()['username']);
+                this.cookieService.set('location', user.data()['location']);
                 this.router.navigateByUrl('');
               }
             })

@@ -32,24 +32,15 @@ export class ProfileComponent implements OnInit {
               console.log(user)
               this.userProfile = new UserProfile(user.data()['userId'], user.data()['username'], user.data()['profilePictureUrl'], user.data()['location'], []);
   
-
               this.db.collection<any>('products').ref
                 .get()
                 .then(res => {
                   res.forEach(product => {
-
-                    if (product.data()['userId'] == this.cookieService.get('userId')){
-                      this.userProfile.listings.push(new ListingObject(product.data()['price'], product.data()['location'], product.data()['name'], product.data()['pictureUrl'], this.userProfile))
+                    if (product.data()['owner'] == this.cookieService.get('username')){
+                      this.userProfile.listings.push(new ListingObject(product.data()['price'], product.data()['location'], product.data()['name'], product.data()['photoUrl'], this.userProfile))
                     }
-
-                    
                   })
               })
-
-
-       
-
-
             }
           })
       })
