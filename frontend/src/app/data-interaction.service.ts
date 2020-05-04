@@ -94,6 +94,10 @@ export class DataInteractionService {
     // return -1 if failed login
   }
 
+  signUp(username : string, password : string){
+    
+  }
+
 
   pullNewListing(){
     // pull a listing from the database where not in hates or likes

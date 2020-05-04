@@ -20,6 +20,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     ListingPreviewComponent,
     MessagingComponent,
     LoginComponent,
-    NewListingComponent
+    NewListingComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
