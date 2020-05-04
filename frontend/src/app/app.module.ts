@@ -18,6 +18,8 @@ import { NewListingComponent } from './new-listing/new-listing.component';
 import { CookieService } from 'ngx-cookie-service';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { environment } from '../environments/environment';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, 'swipeshop')
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'swipeshop'),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

@@ -4,6 +4,7 @@ import { Message } from './message';
 import { UserProfile } from './user-profile';
 import { InternalInteractionService } from './internal-interaction.service';
 import { CookieService } from 'ngx-cookie-service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -68,9 +69,8 @@ export class DataInteractionService {
     new Message(this.profiles[1], this.profiles[0], '', new Date('2020-04-24T18:38:00'), 'https://i.imgur.com/kLNuaHs.jpg'),
   ]
 
-  constructor(private internalInteractionService : InternalInteractionService, private cookieService : CookieService) {
-    
-    
+  constructor(private internalInteractionService : InternalInteractionService, private cookieService : CookieService, private db : AngularFirestore) {
+        
     // temp
     let profile : UserProfile = this.profiles[0];
     this.internalInteractionService.currentUser = profile;
@@ -103,7 +103,7 @@ export class DataInteractionService {
 
     
     // return the ListingObject
-    
+
 
     // temporary
     return this.listings[Math.floor(Math.random() * this.listings.length)]  
@@ -149,8 +149,20 @@ export class DataInteractionService {
   }
 
   sendMessage(messageText : string, imageUrl : string, recipient : UserProfile){
+    let dbMessage = {
+      userIdFrom : this.internalInteractionService.currentUser.id,
+      userIdTo : recipient.id,
+      time : new Date(),
+      messageBody : messageText,
+      attachmentUrl : imageUrl
+    };
+
+    return new Promise<any>((resolve, reject) => {
+      this.db.collection('messages').add(dbMessage).then(res => {}, err => reject(err));
+    });
+
     // temp
-    this.messagesFromOneUser.push(new Message(recipient, this.internalInteractionService.currentUser, messageText, new Date(), imageUrl));
+    // this.messagesFromOneUser.push(new Message(recipient, this.internalInteractionService.currentUser, messageText, new Date(), imageUrl));
   }
 
   pullProfile(id : number){
