@@ -13,6 +13,7 @@ import { MessageCardComponent } from './message-card/message-card.component';
 import { LikesComponent } from './likes/likes.component';
 import { ListingPreviewComponent } from './listing-preview/listing-preview.component';
 import { MessagingComponent } from './messaging/messaging.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MessagingComponent } from './messaging/messaging.component';
     MessageCardComponent,
     LikesComponent,
     ListingPreviewComponent,
-    MessagingComponent
+    MessagingComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

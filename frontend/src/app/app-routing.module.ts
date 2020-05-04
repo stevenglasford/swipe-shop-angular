@@ -5,6 +5,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { MessagesComponent } from './messages/messages.component';
 import { LikesComponent } from './likes/likes.component';
 import { MessagingComponent } from './messaging/messaging.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'messages', component: MessagesComponent },
   { path: 'likes', component: LikesComponent },
   { path: 'messaging', component: MessagingComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({
