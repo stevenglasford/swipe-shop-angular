@@ -103,6 +103,23 @@ export class DataInteractionService {
     .get()
     .then(res => {
       if (res.docs.length == 0){
+        // no user with that name
+
+        // get the next user id
+
+        var maxId = 0;
+
+        this.db.collection<any>('users').ref.get().then(res => {
+          res.forEach(user => {
+            if (user.data()['userId'] > maxId){
+              maxId = user.data()['userId'];
+            }
+          })
+          console.log(maxId)
+        });
+
+        
+
 
       } else {
         res.forEach(user => {
