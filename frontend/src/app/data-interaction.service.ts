@@ -3,6 +3,7 @@ import { ListingObject } from './listing-object';
 import { Message } from './message';
 import { UserProfile } from './user-profile';
 import { InternalInteractionService } from './internal-interaction.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -67,7 +68,9 @@ export class DataInteractionService {
     new Message(this.profiles[1], this.profiles[0], '', new Date('2020-04-24T18:38:00'), 'https://i.imgur.com/kLNuaHs.jpg'),
   ]
 
-  constructor(private internalInteractionService : InternalInteractionService) {
+  constructor(private internalInteractionService : InternalInteractionService, private cookieService : CookieService) {
+    
+    
     // temp
     let profile : UserProfile = this.profiles[0];
     this.internalInteractionService.currentUser = profile;
@@ -75,6 +78,8 @@ export class DataInteractionService {
 
 
   login(username : string, password : string){
+
+    
     // return a profile object
 
     
@@ -98,6 +103,7 @@ export class DataInteractionService {
 
     
     // return the ListingObject
+    
 
     // temporary
     return this.listings[Math.floor(Math.random() * this.listings.length)]  
