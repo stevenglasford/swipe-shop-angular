@@ -81,8 +81,12 @@ export class DataInteractionService {
     // set internal interaction service to this user profile
 
     //temp
-    let profile : UserProfile = null;
+    let profile : UserProfile = this.profiles[0];
     this.internalInteractionService.currentUser = profile;
+
+    return profile.id;
+
+    // return -1 if failed login
   }
 
 

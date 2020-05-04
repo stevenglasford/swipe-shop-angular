@@ -15,6 +15,7 @@ import { ListingPreviewComponent } from './listing-preview/listing-preview.compo
 import { MessagingComponent } from './messaging/messaging.component';
 import { LoginComponent } from './login/login.component';
 import { NewListingComponent } from './new-listing/new-listing.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { NewListingComponent } from './new-listing/new-listing.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

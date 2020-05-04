@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ListingObject } from '../listing-object';
 import { DataInteractionService } from '../data-interaction.service';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
