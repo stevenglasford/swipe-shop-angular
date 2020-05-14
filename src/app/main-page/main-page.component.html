@@ -1,0 +1,11 @@
+<app-header></app-header>
+<app-listing *ngIf="listingObject != null" [listingObject]="listingObject"></app-listing>
+
+<div *ngIf="listingObject == null" class="container">
+    <p>No more listings, sad :(</p>
+</div>
+
+<div class="container" id="optionsContainer">
+    <button class="btn" id="hateButton" (click)="hate()">Hate It</button>
+    <button class="btn" id="loveButton" (click)="love()">Love It</button>
+</div>

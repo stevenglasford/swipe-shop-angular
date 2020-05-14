@@ -1,0 +1,13 @@
+<div class="container" id="imageContainer">
+    <h4>{{listingObject.description}}</h4>
+    <img src={{listingObject.imageUrl}} alt="Image" id="image">
+    <div class="row" id="detailsRow">
+        <div class="col-auto">
+            City: {{listingObject.city}}
+        </div>
+        <div class="col"></div>
+        <div class="col-auto">
+            Price: {{listingObject.price | currency}}
+        </div>
+    </div>
+</div>
